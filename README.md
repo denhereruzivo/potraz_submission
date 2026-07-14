@@ -1,7 +1,9 @@
-# AI-Based Quality Management System (QMS)
-### Research and Practitioner Assistant
+# Denhe reRuzivo AI
+### Intelligent Quality Management Copilot
 
-An intelligent, agentic compliance and Quality Management System designed to assist organizations in aligning with international standards (such as ISO 9001 and ISO 14001). This tool automates the tedious processes of drafting Standard Operating Procedures (SOPs), creating quality policies, structuring non-conformity reports, and conducting root cause analyses (RCA) using a Retrieval-Augmented Generation (RAG) architecture.
+Denhe reRuzivo AI is a Quality Management Institute of Zimbabwe (QMIZ) concept-stage platform that makes quality-management expertise more accessible to Zimbabwean organisations. It combines large language models (LLMs), retrieval-augmented generation (RAG), curated and licensed quality knowledge, and human review to support the full management-system lifecycle.
+
+The copilot helps users develop procedures, policies and manuals; interpret ISO requirements; build risk and opportunity registers; plan and report audits; record nonconformities; perform root-cause analysis; manage corrective actions; and translate approved quality content into plain English, Shona and Ndebele. It supports ISO 9001, ISO 14001, ISO 22000, ISO 45001, ISO 27001, ISO 31000, ISO 19011, ISO/IEC 17025 and ISO 15189 use cases.
 
 ---
 
@@ -9,19 +11,22 @@ An intelligent, agentic compliance and Quality Management System designed to ass
 
 This repository contains the full set of technical deliverables required for the **AI for Impact (AI4I) Challenge** Concept Stage submission:
 
-* **[Annex A: Business Model & Sustainability Plan](./business_model.md)**: Highlights customer/payer logic, cost assumptions, and long-term sustainability models.
-* **[User Journey Map](./user_journey.md)**: Details target user personas (Tendai and Ruvimbo) and maps step-by-step user interaction paths.
-* **[Detailed Architecture Document](./architecture.md)**: Explains the RAG data flow, sequence of events, and agent-dispatch mechanism.
-* **[Annex D: Backend Architecture Specifications](./annex_d.md)**: Outlines the chosen technology stack, database layouts, and integration channels.
-* **[Annex B: Deployment & Operational Plan](./deployment_plan.md)**: Highlights local Zimbabwean hosting plans, connectivity optimizations (offline support), and 30/60/90-day milestones.
-* **[Security, Privacy & Responsible AI Safeguards](./security_plan.md)**: Documents the system role permissions, database encryption, and human-in-the-loop validation gates.
+* **[Technical proposal](./fullsubmission.txt)**: QMIZ's AI for Impact Challenge proposal and national-impact case.
+* **[Technical Evidence Pack](./technical_evidence.md)**: Direct evidence and answers for the AI4I readiness requirements.
+* **[Annex A: Business Model & Sustainability Plan](./business_model.md)**: Customer, funding, operating-cost and sustainability assumptions.
+* **[User Journey Map](./user_journey.md)**: Journeys for SMEs, auditors and accreditation-ready laboratories.
+* **[Detailed Architecture Document](./architecture.md)**: RAG, multilingual, validation and data-flow design.
+* **[Annex D: Technical Architecture Specifications](./annex_d.md)**: Proposed technology stack, data stores and integrations.
+* **[Annex B: Deployment & Operational Plan](./deployment_plan.md)**: QMIZ-led pilot, support and 30/60/90-day rollout.
+* **[Security, Privacy & Responsible AI Safeguards](./security_plan.md)**: Access control, data protection and human-validation controls.
+* **[Data Sources, Rights, Limitations and Quality](./data_governance.md)**: Source governance, content rights and data-quality controls.
 
 
 ---
 
 ## 🚀 How the System Works
 
-The platform functions as a co-pilot for Quality Managers and Auditors. Instead of starting compliance documentation from scratch or manually navigating dense regulatory frameworks, users interact with specialized AI agents powered by real-time standard databases.
+The platform functions as a copilot for quality managers, auditors, laboratory personnel, consultants and operational teams. It reduces the cost and effort of implementing management systems while preserving professional accountability: all generated material remains a reviewable draft, not certification or legal advice.
 
 ```mermaid
 graph TD
@@ -32,25 +37,26 @@ graph TD
 
     InputForms & DocEditor & ChatAssistant --> AgentLayer{Agent Dispatcher}
 
-    AgentLayer -->|Draft SOPs| ProcAgent[Procedure Agent: SOP Writer]
-    AgentLayer -->|Draft Policies| PolicyAgent[Policy Agent: Quality Policy Creator]
-    AgentLayer -->|Build Audit Reports| AuditAgent[Audit Agent: Non-Conformity Builder]
-    AgentLayer -->|Analyze Failures| RCAAgent[Root Cause Agent: RCA Analyzer]
+    AgentLayer -->|Draft procedures & policies| DocumentAgent[Document Agent]
+    AgentLayer -->|Plan and report audits| AuditAgent[Audit Agent]
+    AgentLayer -->|Manage risks & opportunities| RiskAgent[Risk Agent]
+    AgentLayer -->|Analyze nonconformities| RCAAgent[Root Cause Agent]
+    AgentLayer -->|Explain or translate content| LanguageAgent[Language Agent]
 
-    ProcAgent & PolicyAgent & AuditAgent & RCAAgent --> AIEngine[AI Engine: LLM + RAG]
+    DocumentAgent & AuditAgent & RiskAgent & RCAAgent & LanguageAgent --> AIEngine[AI Engine: LLM + RAG + Validation]
     
     AIEngine -->|Vector Search Query| VectorDB[(Vector Database: Pinecone/Weaviate)]
-    VectorDB -->|Retrieves context| KnowledgeBase[Knowledge Base: ISO Clauses, Procedures, Audits]
+    VectorDB -->|Retrieves approved context| KnowledgeBase[Knowledge Base: licensed standards, regulations, templates & glossaries]
     
     AIEngine -->|Synthesized Output| UI
 ```
 
 ### The Step-by-Step Workflow
 
-1. **User Request**: The user specifies a task in the **Web Interface** (e.g., submitting audit notes via a form, or asking a compliance question in the chat).
-2. **Agent Assignment**: The request is routed to the appropriate specialized compliance agent (e.g., the *Audit Agent* if dealing with non-conformities, or the *Procedure Agent* if drafting an SOP).
+1. **User Request**: The user selects a task, standard, organisational context and preferred language—for example, a risk register, an audit checklist or a procedure draft.
+2. **Agent Assignment**: The request is routed to the appropriate specialist workflow, such as document drafting, audit, risk, root-cause analysis or translation.
 3. **Retrieval-Augmented Generation (RAG)**:
-   * The AI Engine formulates a query and searches the **Vector Database (Pinecone/Weaviate)** for semantically relevant regulatory clauses, approved templates, and historical data.
-   * Relevant **ISO Clauses** and standards are retrieved from the knowledge base.
-4. **Context-Aware Synthesis**: The LLM combines the user's specific context with the retrieved standard clauses and templates, generating a precise, compliant draft.
-5. **Human-in-the-Loop Review**: The draft is pushed directly into the **Document Editor** for human validation, editing, and approval before being finalized.
+   * The AI Engine searches an authorised knowledge base for relevant standard excerpts, regulatory guidance, approved templates and organisational material the user is allowed to access.
+   * Each response displays the source context and flags insufficient evidence rather than inventing a requirement.
+4. **Context-Aware Synthesis**: The LLM produces a structured draft, explanation or translation that preserves technical meaning and separates recommendations from verified requirements.
+5. **Human-in-the-Loop Review**: A qualified user validates, edits and approves the result before publication, implementation or use in an audit.

@@ -1,5 +1,5 @@
 # Annex A: Business Model & Sustainability Plan
-### AI-Based QMS Research & Practitioner Assistant
+### Denhe reRuzivo AI — Intelligent Quality Management Copilot
 
 This document contains the completed business model and sustainability plan requested in Annex A of the AI4I Product Readiness guidelines, addressing key operating costs, sustainability structures, and financial assumptions.
 
@@ -9,44 +9,40 @@ This document contains the completed business model and sustainability plan requ
 
 | Field | Participant Response |
 | :--- | :--- |
-| **Problem** | Quality Management Specialists and Auditors spend days manually cross-referencing complex ISO standards (9001, 14001) with internal procedures, leading to delays, administrative fatigue, and critical compliance gaps (e.g., weak Root Cause Analyses). |
-| **Primary User** | • **Tendai** (Quality Management Specialist): Needs fast, standard-compliant SOP and policy drafts.<br>• **Ruvimbo** (Lead Compliance Auditor): Needs to easily log audit findings and formulate robust corrective action plans. |
-| **Beneficiary** | • The host organization (avoids non-compliance penalties, maintains ISO certification).<br>• Departmental supervisors and staff who get clear, actionable SOPs. |
-| **Customer or Payer** | • Regulatory authorities (e.g., POTRAZ), governmental departments, and medium-to-large enterprises seeking to establish or maintain ISO compliance. |
-| **Value Proposition** | • Reduces compliance audit preparation and SOP drafting time by up to 70%.<br>• Minimizes recurring audit findings through structured, automated Root Cause Analyses. |
-| **Revenue or Funding Model** | • **Pay-per-Token Model**: Users and organizations buy token credits (bundles of generation credits) to run AI SOP drafting, Policy creation, and Root Cause Analysis.<br>• **Local Mobile Money Payments**: Integrated via gateways like Paynow to accept local payment methods (EcoCash, OneMoney) and international cards (Visa/Mastercard) for purchasing token credits. |
-| **Cost Drivers** | • LLM API inference costs (Gemini & Claude).<br>• Local Zimbabwean VPS/Server space hosting.<br>• Personnel for system setup, maintenance, and integration of local payment gateways. |
-| **Partnerships** | • **Standards Association of Zimbabwe (SAZ)**: For official ISO documentation updates.<br>• **Local Payment Gateways (e.g., Paynow)**: To facilitate token purchases via EcoCash/OneMoney.<br>• **Local Zimbabwean Hosting Providers (e.g., TelOne, Liquid Intelligent Technologies)**: For local server infrastructure. |
-| **Pilot Market** | • POTRAZ Compliance and Internal Quality Management departments. |
-| **Adoption Risks** | • **Data Sovereignty**: Addressed by hosting on local Zim server space.<br>• **Payment Friction**: Mitigated by providing simple mobile money payments for token top-ups. |
-| **Success Metrics** | • **30-Day**: Integrate local hosting and payment gateways; onboard 20 pilot users with initial free token allocations.<br>• **60-Day**: Record 100+ paid token top-up transactions; run 20+ SOP/Audit drafts.<br>• **90-Day**: Transition 100% of pilot users to self-sustained token purchases. |
+| **Problem** | Zimbabwean SMEs, public institutions, manufacturers and conformity-assessment bodies face costly, fragmented and difficult-to-access quality-management expertise. Developing management systems, interpreting ISO requirements, auditing and preparing for accreditation takes time and can be inaccessible to staff who work best in local languages. |
+| **Primary User** | • Quality managers, consultants and operational leaders developing QMS documents and risk registers.<br>• Internal and lead auditors managing audit programmes, nonconformities and corrective actions.<br>• Laboratory, inspection and certification-body personnel preparing for ISO/IEC 17025, ISO 15189 or other accreditation-related management-system work. |
+| **Beneficiary** | • Organisations seeking effective management systems, certification or accreditation readiness.<br>• Employees who receive clearer, locally understandable quality documentation.<br>• Zimbabwe's National Quality Infrastructure through wider access to quality-management knowledge. |
+| **Customer or Payer** | • QMIZ-led pilots supported by challenge or partner funding.<br>• SMEs, enterprises, laboratories, public institutions and professional service providers subscribing for organisational access, implementation support and training. |
+| **Value Proposition** | • Reduces the time required to create and maintain reviewed QMS artefacts.<br>• Makes authoritative guidance and practical templates more accessible.<br>• Supports multilingual learning, stronger audit practice, risk management and continual improvement. |
+| **Revenue or Funding Model** | • **Pilot funding and institutional partnerships** support design, evaluation and onboarding.<br>• **Organisation subscriptions** tiered by users, workflows and knowledge-base access.<br>• **QMIZ professional services** for training, implementation support and expert review. Transactional usage pricing may be considered after pilot validation; no payment gateway is assumed in the concept stage. |
+| **Cost Drivers** | • Licensed standards and content-rights management.<br>• LLM, embedding, translation and secure hosting costs.<br>• QMIZ subject-matter experts, bilingual reviewers, implementation training, support and quality assurance. |
+| **Partnerships** | • **QMIZ** as product steward and quality-management subject-matter lead.<br>• Standards and regulatory bodies, including rights holders for authorised source material.<br>• Conformity-assessment, laboratory and industry partners for pilots and evaluation.<br>• Zimbabwean cloud and connectivity providers for resilient deployment. |
+| **Pilot Market** | • QMIZ member or partner organisations, starting with a representative SME, public institution or laboratory. POTRAZ may participate only as a prospective partner, not as the defining product market. |
+| **Adoption Risks** | • **Trust and incorrect reliance**: mitigated by source-grounded output, review gates and expert training.<br>• **Data sovereignty and confidentiality**: mitigated through tenant isolation, local or on-premise options and clear retention controls.<br>• **Standards copyright**: mitigated through licensed content, excerpt controls and rights-aware retrieval. |
+| **Success Metrics** | • **30-day**: confirm pilot partner, data rights, priority workflows and baseline documentation effort.<br>• **60-day**: onboard 15–20 users; evaluate document, audit and risk workflows with expert reviewers.<br>• **90-day**: measure time saved, source coverage, review acceptance, local-language usability and pilot readiness for broader deployment. |
 
 ---
 
 ## 💰 Detailed Operating Costs & Assumptions
 
-To ensure the long-term sustainability of the QMS assistant, we have mapped out key financial assumptions and projected monthly operating costs under a local hosting and token-based monetization model.
+To ensure long-term sustainability, QMIZ will validate costs and willingness to pay during pilots before selecting commercial pricing. The estimates below are planning assumptions, not quotations.
 
 ### 1. Key Cost Drivers & Estimates
 
-Assuming a pilot group of **20 active users** at a single institution querying the locally hosted app:
+Assuming a pilot group of **20 active users** at one or two institutions:
 
 | Cost Category | Description | Monthly Cost (USD) |
 | :--- | :--- | :--- |
-| **AI LLM APIs** | Gemini 1.5 Flash API calls (for drafting SOPs, Policies, and conducting RAG queries). | ~$15.00 |
-| **Vector Database** | Pinecone Serverless or Weaviate locally hosted (storing indexed ISO clauses). | ~$10.00 |
-| **Local Zim Hosting** | Local VPS hosting package (e.g., TelOne Cloud or Liquid Intelligent Technologies server space). | ~$45.00 |
-| **Payment Gateway Fees** | Paynow/EcoCash transaction processing fees (approx. 2% on credit purchases). | ~$10.00 |
-| **User Support & Maintenance**| Local developer/support support retainer for troubleshooting and gateway maintenance. | ~$150.00 |
-| **Total Estimated Operating Cost**| | **~$230.00 / month** |
+| **AI and translation services** | Inference, embeddings, retrieval and local-language evaluation for drafting, explanation and analysis. | To validate during pilot |
+| **Knowledge base and content rights** | Secure indexing, version management and licences or permissions for source material. | To validate with rights holders |
+| **Zimbabwean hosting and backup** | VPS/cloud, encrypted storage, monitoring and disaster recovery. | To validate with provider |
+| **Expert review and support** | QMIZ quality experts, bilingual reviewers, onboarding and user support. | To validate against pilot workload |
+| **Total operating cost** | Costs will be modelled using measured pilot demand and contracted content rights. | Not yet costed |
 
-### 2. Financial & Token-Based Assumptions
+### 2. Sustainability Assumptions
 
-* **Token Consumption & Pricing**:
-  * Users buy token credit bundles (e.g., $10 for 50 compliance queries/generations).
-  * A single query costs the user approximately $0.20, while only costing us ~$0.002 in Gemini 1.5 Flash API fees (based on 10k input tokens + 1.5k output tokens).
-  * This creates a high-margin revenue model where token sales comfortably cover the fixed local hosting and support costs of $230/month once the user base exceeds ~1,200 queries/month.
-* **Zimbabwe Context Integration**:
-  * Payments are integrated with Paynow to allow checkout via **EcoCash** or **OneMoney**, keeping the onboarding frictionless for Zimbabwean compliance professionals.
-* **Onboarding & Training Cost**: A one-time setup cost of $500 is budgeted for running the 2-day on-site training workshop and configuring the pilot database.
+* **Pilot evidence before pricing**: Track workflow usage, model cost, expert-review time, content-rights cost, user retention and measurable documentation or audit-efficiency improvements.
+* **Institutional access**: Price organisational subscriptions against the value of access, support and controlled knowledge bases rather than exposing a simplistic per-query price.
+* **Training and implementation**: QMIZ workshops and advisory services provide an early sustainable service line while product workflows mature.
+* **Equitable access**: Explore sponsor-supported access for SMEs and public institutions where cost is a barrier to adoption of effective management systems.
 

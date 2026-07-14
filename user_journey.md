@@ -1,56 +1,75 @@
-# User Journey Map
-### AI-Based QMS Research & Practitioner Assistant
+# Denhe reRuzivo AI: User Journey Map
+### Intelligent Quality Management Copilot
 
-This document outlines the target user personas and maps their step-by-step interactions with the QMS system.
+These journeys reflect the organisations QMIZ intends to support: SMEs, manufacturers, public institutions, laboratories, inspection and certification bodies, consultants and auditors. Generated output always requires qualified human review.
 
 ---
 
 ## 👥 User Personas
 
-### 1. Tendai, Quality Management Specialist
-* **Role**: Quality Manager at a large infrastructure organization.
-* **Goals**: Regularly update Standard Operating Procedures (SOPs) and corporate quality policies to maintain compliance with ISO 9001 and ISO 14001.
-* **Pain Points**: Spends days cross-referencing dense, technical ISO documents against old company templates. Reviewing updates with department heads is slow.
-* **System Need**: A fast way to generate regulatory-compliant SOP drafts and policies using company templates.
+### 1. Tariro, SME Quality Manager
+* **Role**: Quality manager at a Zimbabwean food-processing SME preparing for ISO 9001 and ISO 22000 certification.
+* **Goals**: Create consistent policies, procedures, risk registers and staff-friendly training material without unaffordable consulting cycles.
+* **Pain Points**: Limited access to ISO expertise, lengthy document development, and staff who need explanations in clear language.
+* **System Need**: Grounded, editable templates and multilingual explanations that reduce effort without claiming to guarantee certification.
 
-### 2. Ruvimbo, Lead Compliance Auditor
-* **Role**: Internal Auditor.
-* **Goals**: Identify process gaps, document non-conformities during internal audits, and guide departments toward effective corrective actions.
-* **Pain Points**: Documenting non-conformities is tedious. Teams often write weak Root Cause Analyses (RCAs) that fail to identify the core issue, resulting in recurring audit findings.
-* **System Need**: A tool that converts raw audit notes into structured non-conformity records and guides departments through a robust RCA process.
+### 2. Ruvimbo, Internal Lead Auditor
+* **Role**: Internal auditor working across a manufacturer or public institution.
+* **Goals**: Build an audit programme, record evidence, write clear nonconformities and follow corrective actions through to effectiveness review.
+* **Pain Points**: Audit documentation is inconsistent and teams often address symptoms rather than root causes.
+* **System Need**: A workflow that structures evidence, cites the relevant authorised reference and supports robust corrective-action planning.
+
+### 3. Nyasha, Laboratory Quality Officer
+* **Role**: Quality officer at a testing laboratory preparing for ISO/IEC 17025 accreditation.
+* **Goals**: Assess readiness, maintain controlled documentation and make procedures understandable to technical staff.
+* **Pain Points**: Accreditation preparation requires specialised documentation and a clear link between evidence, competence and requirements.
+* **System Need**: A guided gap-assessment and document workflow that preserves expert control and supports plain-language or local-language training material.
 
 ---
 
 ## 🗺️ Core User Journeys
 
-### Journey 1: Writing an Environmental Waste SOP (Tendai)
+### Journey 1: Creating a food-safety procedure and staff guide (Tariro)
 
 ```
-[Define Topic] ──> [Query AI Assistant] ──> [RAG Lookup] ──> [Review & Edit] ──> [Export & Publish]
+[Define task] ──> [Select standard & language] ──> [Retrieve sources] ──> [Review] ──> [Approve & publish]
 ```
 
-1. **Initiation**: Tendai needs to draft a new SOP for *E-Waste Disposal* to comply with a new environmental mandate (ISO 14001).
-2. **Form Interaction**: Tendai navigates to the **User Input Forms** in the Web Interface. He selects "SOP Creation Form".
+1. **Initiation**: Tariro needs a cleaning-and-sanitation procedure and employee guide for a food-processing line.
+2. **Form Interaction**: She selects the document workflow, identifies ISO 22000 and the organisation's approved template, and requests a plain-English draft with a Shona explanation for employee training.
 3. **Drafting Parameters**:
-   * He enters the scope: *E-waste disposal in regional warehouses*.
-   * He selects the standard: *ISO 14001 (Clause 8.1 - Operational Planning and Control)*.
-   * He uploads a sample organizational template.
-4. **Agent Action**: The **Procedure Agent** coordinates with the RAG database to pull specific Zimbabwean waste disposal rules and ISO 14001 clauses, feeding them to the AI Engine.
-5. **Editing**: Within seconds, the generated draft appears in the **Document Editor**. Tendai reviews it, adjusts localized vocabulary, and locks the document for final approval.
+   * She enters the scope, process owners, hazards, controls and existing evidence.
+   * She identifies the required source material and uploads only documents she is permitted to use.
+   * She requests a risk-and-opportunity register for the process.
+4. **Workflow Action**: The system retrieves authorised ISO guidance, approved templates and relevant organisational material, then produces labelled document and risk-register drafts.
+5. **Review**: Tariro and the food-safety team verify the technical content. A competent bilingual reviewer checks the Shona guide before the Quality Manager approves it.
 
 ---
 
-### Journey 2: Logging an Audit Finding & Performing RCA (Ruvimbo)
+### Journey 2: Recording an audit finding and corrective action (Ruvimbo)
 
 ```
 [Log Finding] ──> [Structured Audit Report] ──> [Request RCA] ──> [Corrective Action Suggestions] ──> [Log to CAPA DB]
 ```
 
-1. **On-Site Logging**: During an inspection, Ruvimbo finds that warehouse staff are not recording daily calibration records.
-2. **Input**: Ruvimbo opens the QMS app on her tablet, goes to "Log Non-Conformity", and enters raw notes: *"Calibration logs missing for past 3 days in Harare North warehouse. Operators said they forgot."*
-3. **Structured Build**: The **Audit Agent** processes the input and structures it into a formal Non-Conformity Report, mapping it directly to **ISO 9001 (Clause 8.5.1 - Control of production and service provision)**.
+1. **On-site logging**: Ruvimbo finds that required calibration records were not completed for three days.
+2. **Input**: She records objective evidence, the affected process and the applicable authorised requirement using an offline-capable tablet form.
+3. **Structured build**: The audit workflow proposes a nonconformity record, separating the evidence, requirement and finding. Ruvimbo checks the cited source and corrects the draft.
 4. **RCA Assistance**: The system automatically prompts: *"Would you like to initiate a Root Cause Analysis?"*
-5. **RCA Generation**: The **Root Cause Agent** uses the "5 Whys" method to query similar historical records. It suggests potential root causes (e.g., lack of automated reminders, training gaps) and proposes a corrective action plan:
+5. **RCA generation**: The root-cause workflow guides a 5 Whys analysis. It offers hypotheses and a corrective-action plan for team validation:
    * *Correction*: Immediate calibration check.
    * *Corrective Action*: Implement a digital reminder system and retrain warehouse supervisors.
-6. **Resolution**: Ruvimbo approves the RCA and registers the plan in the **Corrective Action Database**.
+6. **Resolution**: The process owner accepts the plan, assigns actions and records effectiveness evidence in the corrective-action register.
+
+---
+
+### Journey 3: Preparing a laboratory for accreditation (Nyasha)
+
+```
+[Select scope] ──> [Gap assessment] ──> [Evidence & document plan] ──> [Expert review] ──> [Readiness dashboard]
+```
+
+1. **Scope**: Nyasha selects the laboratory's intended ISO/IEC 17025 scope and registers the available procedures, records and competence evidence.
+2. **Assessment**: The system produces a traceable gap-assessment checklist and identifies missing evidence; it does not determine accreditation status.
+3. **Improvement plan**: Nyasha assigns document, risk and corrective-action tasks to accountable owners.
+4. **Review**: Laboratory leadership and a competent assessor review readiness evidence before engaging the accreditation body.

@@ -1,7 +1,7 @@
-# Detailed AI Architecture Document
-### AI-Based QMS Research & Practitioner Assistant
+# Denhe reRuzivo AI: Architecture
+### Intelligent Quality Management Copilot
 
-This document outlines the detailed architecture and technical integration pathways for the QMS assistant, expanding upon the AI architecture diagram.
+This concept-stage architecture describes how QMIZ can deliver a secure, multilingual quality-management copilot for Zimbabwe's National Quality Infrastructure. It is designed to support ISO implementation, certification readiness and accreditation preparation; it does not replace competent auditors, consultants, certification bodies or official standards.
 
 ---
 
@@ -18,7 +18,7 @@ The system is split into four distinct layers:
                              ▼
 ┌─────────────────────────────────────────────────────────┐
 │                   Agentic Control Layer                 │
-│   (Procedure, Policy, Audit, & Root Cause Agents)       │
+│ (Document, Audit, Risk, RCA & Language workflows)       │
 └────────────────────────────┬────────────────────────────┘
                              │
                              ▼
@@ -30,30 +30,32 @@ The system is split into four distinct layers:
                               ▼
 ┌─────────────────────────────────────────────────────────┐
 │                    Data & Storage                       │
-│    (Vector DB, Knowledge Base, Standards DB, CAPA DB)   │
+│ (Vector DB, authorised knowledge, QMS, CAPA & risk DB) │
 └─────────────────────────────────────────────────────────┘
 ```
 
 ### 1. Web Interface (Presentation Layer)
-* **User Input Forms**: Capture data from the user. Form validations map input fields to agent expectations (e.g., separating raw observations from standard references).
-* **Document Editor**: Real-time rich text editor integrated with the Agent Control Layer. It allows users to write prompts directly or request sections of the active document to be expanded, rephrased, or checked against standards.
-* **Chat Assistant**: A lightweight chat UI designed for swift QA queries against the vector-indexed standards.
+* **User Input Forms**: Capture the task, applicable standard, organisation context, evidence and preferred language. Validation separates observations, requirements and assumptions.
+* **Document Editor**: Lets authorised users create, compare, revise, approve and export procedures, policies, manuals, audit reports and training materials.
+* **Copilot Chat**: Provides grounded explanations of retrieved content in plain English, Shona or Ndebele, with source references and clear uncertainty notices.
 
 ### 2. Agentic Control Layer
 This layer consists of specialized, prompt-engineered agents that run custom instructions:
-* **Procedure Agent**: SOP specialized template parser.
-* **Policy Agent**: Policy template builder.
-* **Audit Agent**: Maps raw logs to compliance checklists.
-* **Root Cause Agent**: Guided prompt framework implementing standard RCA mechanisms (e.g., 5-Whys, Ishikawa/Fishbone reasoning).
+* **Document Workflow**: Produces structured procedure, policy, manual and work-instruction drafts from approved templates.
+* **Audit Workflow**: Builds audit programmes and checklists, structures evidence and records technically clear nonconformities.
+* **Risk Workflow**: Develops risk-and-opportunity registers aligned with the selected management system and ISO 31000 principles.
+* **Root-Cause Workflow**: Guides 5 Whys, Ishikawa/Fishbone and corrective-action analysis without treating suggestions as findings.
+* **Language Workflow**: Explains and translates approved material into Shona, Ndebele or plain English. A bilingual reviewer verifies technical meaning before release.
 
 ### 3. AI Engine (Retrieval & Generation Layer)
-* **LLM API Wrapper**: Integrates model endpoints (e.g., Claude/Gemini).
-* **RAG Orchestrator**: Converts queries into vector embeddings using standard models (e.g., `text-embedding-3-small`), searches the Vector DB, retrieves the top-$K$ matching documents, and injects them into the model's context window.
+* **LLM API Wrapper**: Integrates selected model endpoints behind a provider-neutral interface and keeps prompts, evaluations and access controls auditable.
+* **RAG Orchestrator**: Embeds a request, filters retrieval by document rights, standard, jurisdiction, organisation and language, and injects only relevant authorised context into the model.
+* **Validation Layer**: Checks required fields, source coverage, output format and prohibited claims. Low-confidence or unsupported results are returned for expert review, not presented as verified compliance advice.
 
 ### 4. Vector Database & Knowledge Stores (Storage Layer)
-* **Vector DB**: Pinecone or Weaviate, hosting the **ISO Clause Index** and **Audit Examples**.
-* **Relational DB**: PostgreSQL storing user accounts, system configuration, session logs, and the **Corrective Action (CAPA) Database**.
-* **Template Library**: Static markdown templates representing standard business and operational files.
+* **Vector DB**: Pinecone or Weaviate, hosting rights-controlled indexes of licensed standard excerpts, regulations, guidance, templates and quality glossaries. Full ISO texts are ingested only with permission from the rightsholder.
+* **Relational DB**: PostgreSQL storing user accounts, tenant configuration, approvals, audit trails, corrective actions, risk registers and accreditation-readiness artefacts.
+* **Object Store and Template Library**: Encrypted source documents and approved, versioned templates for ISO 9001, 14001, 22000, 45001, 27001, 31000, 19011, ISO/IEC 17025 and ISO 15189 use cases.
 
 ---
 
@@ -62,21 +64,21 @@ This layer consists of specialized, prompt-engineered agents that run custom ins
 ```mermaid
 sequenceDiagram
     autonumber
-    actor User as User/Auditor
+    actor User as Quality user
     participant UI as Web UI
     participant Agent as Specialized Agent
     participant RAG as RAG Orchestrator
     participant VDB as Vector DB (Pinecone/Weaviate)
     participant LLM as LLM API
 
-    User->>UI: Submit Audit/SOP Request
+    User->>UI: Submit task, evidence, standard and language
     UI->>Agent: Route Request to Agent
     Agent->>RAG: Format Query String & Request Context
-    RAG->>VDB: Query Vector DB (Semantic Match on ISO Clauses)
-    VDB-->>RAG: Return Top-K Relevant Clauses/Templates
-    RAG->>LLM: Send Prompt + Retreived Clauses + User Context
-    LLM-->>RAG: Generate Draft Document
-    RAG-->>Agent: Send Raw Draft
-    Agent-->>UI: Display Document in Editor
-    User->>UI: Edit, Approve, and Save Document
+    RAG->>VDB: Retrieve authorised, relevant context
+    VDB-->>RAG: Return sources, templates and glossary terms
+    RAG->>LLM: Send task, sources and user context
+    LLM-->>RAG: Generate labelled draft or explanation
+    RAG-->>Agent: Validate sources, format and confidence
+    Agent-->>UI: Display draft with citations and review flags
+    User->>UI: Expert edits, approves and saves output
 ```
